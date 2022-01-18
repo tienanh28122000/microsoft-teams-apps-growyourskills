@@ -174,7 +174,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                     return this.NotFound($"Skills are not configured for team {teamId}.");
                 }
 
-                // If none of skills are selected for filtering, assign all configured skills for team to get projects which are intended for team.
+                // Nếu không có kỹ năng nào được chọn để lọc, hãy chỉ định tất cả các kỹ năng đã định cấu hình cho nhóm để nhận các dự án dành cho nhóm.
                 if (string.IsNullOrEmpty(skills))
                 {
                     skills = teamSkillEntity.Skills;
@@ -186,7 +186,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                     skills = string.Join(';', skillsList);
                 }
 
-                // If no skills selected for filtering then get projects irrespective of skills.
+                // Nếu không có kỹ năng nào được chọn để lọc thì sẽ nhận được các dự án không phân biệt kỹ năng.
                 var skillsQuery = this.projectHelper.CreateSkillsQuery(skills);
                 var filterQuery = this.projectHelper.CreateFilterSearchQuery(status, projectOwnerNames);
 
