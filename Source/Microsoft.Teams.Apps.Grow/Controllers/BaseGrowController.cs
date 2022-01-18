@@ -86,7 +86,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Gets the user principal name from the HttpContext.
+        /// Lấy tên chính của người dùng từ HttpContext.
         /// </summary>
         protected string UserPrincipalName
         {
