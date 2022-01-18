@@ -313,12 +313,12 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                 projectDetails.IsRemoved = true;
                 var deletionResult = await this.projectStorageProvider.UpsertProjectAsync(projectDetails);
 
-                // Run indexer if operation is successful.
+                // Chạy trình chỉ mục nếu hoạt động thành công.
                 if (deletionResult)
                 {
                     await this.projectSearchService.RunIndexerOnDemandAsync();
 
-                    // Send Notification to users on project deletion.
+                    // Gửi thông báo cho người dùng về việc xóa dự án.
                     await this.notificationHelper.SendProjectDeletionNotificationAsync(
                         projectDetails);
 
