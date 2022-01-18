@@ -24,7 +24,7 @@ namespace Microsoft.Teams.Apps.Grow
         private readonly IBotFrameworkHttpAdapter botFrameworkHttpAdapter;
 
         /// <summary>
-        /// Activity handler instance.
+        /// Phiên bản trình xử lý hoạt động.
         /// </summary>
         private readonly IBot activityHandler;
 
@@ -40,7 +40,7 @@ namespace Microsoft.Teams.Apps.Grow
         }
 
         /// <summary>
-        /// Handle inbound messages from the BotFramework service.
+        /// Xử lý các tin nhắn đến từ dịch vụ BotFramework.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token for the underlying request.</param>
         /// <returns>A Task that resolves when the message is processed.</returns>
