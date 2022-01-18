@@ -19,7 +19,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
     public class BaseGrowController : ControllerBase
     {
         /// <summary>
-        /// Instance of application insights telemetry client.
+        /// Phiên bản ứng dụng khách hàng thông tin chi tiết từ xa
         /// </summary>
         private readonly TelemetryClient telemetryClient;
 
@@ -33,7 +33,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Gets the user tenant id from the HttpContext.
+        /// Nhận id đối tượng thuê người dùng từ HttpContext.
         /// </summary>
         protected string UserTenantId
         {
