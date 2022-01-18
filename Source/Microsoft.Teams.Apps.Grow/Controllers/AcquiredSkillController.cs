@@ -30,7 +30,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         private readonly ILogger logger;
 
         /// <summary>
-        /// Instance of acquired skill storage provider.
+        /// Trường hợp của nhà cung cấp lưu trữ kỹ năng có được.
         /// </summary>
         private readonly IAcquiredSkillStorageProvider acquiredSkillStorageProvider;
 
@@ -51,8 +51,8 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get call to retrieve list of user acquired skills.
-        /// User will be able to view the skills acquired for all the projects with status as closed.
+        /// Nhận cuộc gọi để truy xuất danh sách các kỹ năng mà người dùng có được.
+        /// Người dùng sẽ có thể xem các kỹ năng có được cho tất cả các dự án có trạng thái là đã đóng.
         /// </summary>
         /// <returns>List of joined projects which are in closed state.</returns>
         [HttpGet("acquired-skills")]
