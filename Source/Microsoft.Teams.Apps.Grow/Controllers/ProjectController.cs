@@ -207,9 +207,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                 return this.BadRequest("Project Id cannot be null or empty.");
             }
 
-#pragma warning disable CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning disable CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             if (projectDetails.ProjectStartDate > projectDetails.ProjectEndDate)
-#pragma warning restore CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning restore CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             {
                 this.RecordEvent("Project start date must be less than end date.");
                 this.logger.LogInformation("Project start date must be less than end date.");
@@ -218,7 +218,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
             try
             {
-                // Validating Project Id as it will be generated at server side in case of adding new project but cannot be null or empty in case of update.
+                // Xác thực dự án Id vì nó sẽ được tạo ở phía máy chủ trong trường hợp thêm dự án mới nhưng không được để trống hoặc trống trong trường hợp cập nhật.
                 var currentProject = await this.projectStorageProvider.GetProjectAsync(this.UserAadId, projectDetails.ProjectId);
 
                 if (currentProject == null || currentProject.IsRemoved)
