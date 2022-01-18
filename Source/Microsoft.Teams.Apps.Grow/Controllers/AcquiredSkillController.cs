@@ -25,7 +25,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
     public class AcquiredSkillController : BaseGrowController
     {
         /// <summary>
-        /// Logs errors and information.
+        /// Ghi lỗi và thông tin.
         /// </summary>
         private readonly ILogger logger;
 
@@ -37,7 +37,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="AcquiredSkillController"/> class.
         /// </summary>
-        /// <param name="logger">Logs errors and information.</param>
+        /// <param name="logger">Ghi lỗi và thông tin.</param>
         /// <param name="telemetryClient">The Application Insights telemetry client.</param>
         /// <param name="acquiredSkillStorageProvider">Acquired skill storage provider dependency injection.</param>
         public AcquiredSkillController(
