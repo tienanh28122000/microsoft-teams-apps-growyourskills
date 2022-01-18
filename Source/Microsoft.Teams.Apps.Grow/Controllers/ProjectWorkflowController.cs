@@ -98,7 +98,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                 // Allow user to join project which has status 'Active' and 'Not started'.
                 if (projectDetails != null && !projectDetails.IsRemoved && (projectDetails.Status == (int)ProjectStatus.NotStarted || projectDetails.Status == (int)ProjectStatus.Active))
                 {
-                    // If there no existing participants
+                    // Nếu không có người tham gia hiện tại
                     if (string.IsNullOrEmpty(projectDetails.ProjectParticipantsUserIds))
                     {
                         projectDetails.ProjectParticipantsUserIds = this.UserAadId;
@@ -106,10 +106,10 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                     }
                     else
                     {
-                        // Get number of people who already joined the project.
+                        // Nhận số người đã tham gia dự án.
                         var joinedUsers = projectDetails.ProjectParticipantsUserIds.Split(';').Where(participant => !string.IsNullOrEmpty(participant));
 
-                        // Check if user's joined project count is reached to maximum team size.
+                        // Kiểm tra xem số lượng dự án đã tham gia của người dùng đã đạt đến quy mô nhóm tối đa hay chưa.
                         if (projectDetails.TeamSize == joinedUsers.Count())
                         {
                             this.logger.LogError($"Project max member count reached for {projectDetails.ProjectId}.");
