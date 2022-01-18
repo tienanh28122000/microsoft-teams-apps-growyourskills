@@ -9,19 +9,19 @@ namespace Microsoft.Teams.Apps.Grow.Common.Interfaces
     using Microsoft.Teams.Apps.Grow.Models;
 
     /// <summary>
-    /// Interface for provider which helps in getting, storing or updating acquired skills details.
+    /// Giao diện dành cho nhà cung cấp giúp lấy, lưu trữ hoặc cập nhật thông tin chi tiết về kỹ năng có được.
     /// </summary>
     public interface IAcquiredSkillStorageProvider
     {
         /// <summary>
-        /// Stores or update acquired skill data.
+        /// Lưu trữ hoặc cập nhật dữ liệu kỹ năng có được.
         /// </summary>
         /// <param name="entity">Holds acquired skill detail.</param>
         /// <returns>A task that represents acquired skill is saved or updated.</returns>
         Task<bool> UpsertAcquiredSkillAsync(AcquiredSkillsEntity entity);
 
         /// <summary>
-        /// Get acquired skills of a user.
+        /// Nhận các kỹ năng có được của một người dùng.
         /// </summary>
         /// <param name="userId">Azure Active Directory id of user.</param>
         /// <returns>A task that represents a collection of acquired skills.</returns>
