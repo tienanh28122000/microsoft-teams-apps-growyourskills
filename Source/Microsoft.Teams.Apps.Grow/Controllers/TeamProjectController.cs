@@ -113,7 +113,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                     if (projects != null && projects.Any())
                     {
-                        // Filter the data based on the configured skills.
+                        // Lọc dữ liệu dựa trên các kỹ năng đã định cấu hình.
                         var filteredTeamProjects = this.projectHelper.GetFilteredProjectsAsPerSkills(projects, teamSkillEntity.Skills);
                         this.RecordEvent("Filtered team project - HTTP Get call succeeded");
                         return this.Ok(filteredTeamProjects);
@@ -136,7 +136,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get projects as per the applied filters, if user is a part of team.
+        /// Nhận các dự án theo các bộ lọc được áp dụng, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="status">Semicolon separated status of projects like Not started/Active/Blocked/Closed.</param>
         /// <param name="projectOwnerNames">Semicolon separated project owner names to filter the projects.</param>
