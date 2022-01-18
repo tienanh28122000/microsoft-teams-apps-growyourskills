@@ -82,7 +82,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Fetch projects according to page count.
+        /// Tìm nạp các dự án theo số lượng trang.
         /// </summary>
         /// <param name="pageCount">Page number to get search data.</param>
         /// <returns>List of projects.</returns>
@@ -121,7 +121,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Stores new project details.
+        /// Lưu trữ chi tiết dự án mới.
         /// </summary>
         /// <param name="projectDetail">Project detail which needs to be stored.</param>
         /// <returns>Returns project for successful operation or false for failure.</returns>
