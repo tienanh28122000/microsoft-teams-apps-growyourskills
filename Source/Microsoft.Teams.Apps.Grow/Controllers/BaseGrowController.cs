@@ -51,7 +51,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Gets the user Azure Active Directory id from the HttpContext.
+        /// Lấy id Azure Active Directory của người dùng từ HttpContext.
         /// </summary>
         protected string UserAadId
         {
