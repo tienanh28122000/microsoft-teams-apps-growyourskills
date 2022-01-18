@@ -176,7 +176,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// This method is used to perform close project operation.
+        /// Phương pháp này được sử dụng để thực hiện hoạt động gần của dự án.
         /// </summary>
         /// <param name="closeProjectModel">Represents a close project model.</param>
         /// <returns>Returns true for successful operation.</returns>
