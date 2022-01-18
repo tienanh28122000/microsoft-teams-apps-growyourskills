@@ -97,7 +97,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Records event data to Application Insights telemetry client.
+        /// Ghi lại dữ liệu sự kiện cho ứng dụng khách đo từ xa của Application Insights.
         /// </summary>
         /// <param name="eventName">Name of the event.</param>
         public void RecordEvent(string eventName)
