@@ -8,12 +8,12 @@ namespace Microsoft.Teams.Apps.Grow.Common.Interfaces
     using Microsoft.Bot.Schema.Teams;
 
     /// <summary>
-    /// Interface that handles the search activities for Messaging Extension.
+    /// Giao diện xử lý các hoạt động tìm kiếm cho Tiện ích nhắn tin.
     /// </summary>
     public interface IMessagingExtensionHelper
     {
         /// <summary>
-        /// Get the results using search query and populate the result (card + preview).
+        /// Nhận kết quả bằng cách sử dụng truy vấn tìm kiếm và điền kết quả (thẻ + bản xem trước).
         /// </summary>
         /// <param name="query">Query which the user had typed in Messaging Extension search field.</param>
         /// <param name="commandId">Command id to determine which tab in Messaging Extension has been invoked.</param>
@@ -29,7 +29,7 @@ namespace Microsoft.Teams.Apps.Grow.Common.Interfaces
             int? skip);
 
         /// <summary>
-        /// Get the value of the searchText parameter in the Messaging Extension query.
+        /// Nhận giá trị của tham số searchText trong truy vấn Tiện ích nhắn tin.
         /// </summary>
         /// <param name="query">Contains Messaging Extension query keywords.</param>
         /// <returns>A value of the searchText parameter.</returns>
