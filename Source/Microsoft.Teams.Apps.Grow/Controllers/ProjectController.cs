@@ -246,13 +246,13 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                 var upsertResult = await this.projectStorageProvider.UpsertProjectAsync(currentProject);
 
-                // If operation is successful, run indexer and sent notification to removed participants.
+                // Nếu hoạt động thành công, hãy chạy trình lập chỉ mục và gửi thông báo đến những người tham gia đã bị xóa.
                 if (upsertResult)
                 {
                     this.RecordEvent("Project - HTTP Patch call succeeded.");
                     await this.projectSearchService.RunIndexerOnDemandAsync();
 
-                    // Send notification for removed users.
+                    // Gửi thông báo cho những người dùng đã bị xóa.
                     if (removedProjectParticipants != null && removedProjectParticipants.Any())
                     {
                         await this.notificationHelper.SendProjectRemovalNotificationAsync(
@@ -278,7 +278,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Delete a project.
+        /// Xóa dự án.
         /// </summary>
         /// <param name="projectId">Project Id of the project to be deleted.</param>
         /// <returns>Returns true for successful operation.</returns>
