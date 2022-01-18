@@ -188,7 +188,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Updates existing project details.
+        /// Cập nhật chi tiết dự án hiện có.
         /// </summary>
         /// <param name="projectDetails">Project details which needs to be updated.</param>
         /// <returns>Returns true for successful operation.</returns>
@@ -197,9 +197,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         {
             this.RecordEvent("Update project - HTTP Patch call initiated");
 
-#pragma warning disable CA1062 // project details are validated by model validations for null check and is responded with bad request status
+#pragma warning disable CA1062 // chi tiết dự án được xác nhận bằng xác thực mô hình để kiểm tra null và được phản hồi với trạng thái yêu cầu không hợp lệ
             if (string.IsNullOrEmpty(projectDetails.ProjectId))
-#pragma warning restore CA1062 // project details are validated by model validations for null check and is responded with bad request status
+#pragma warning restore CA1062 // chi tiết dự án được xác nhận bằng xác thực mô hình để kiểm tra null và được phản hồi với trạng thái yêu cầu không hợp lệ
             {
                 this.logger.LogError($"Project Id is either null or empty.");
                 this.RecordEvent("Update project - HTTP Patch call failed");
