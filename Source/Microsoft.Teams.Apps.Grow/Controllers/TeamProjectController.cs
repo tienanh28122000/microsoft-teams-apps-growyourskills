@@ -297,7 +297,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             {
                 var projectOwnerNames = new List<string>();
 
-                // Get skills based on the team id for which skills has configured.
+                // Nhận các kỹ năng dựa trên id nhóm mà các kỹ năng đã được định cấu hình.
                 var teamSkillEntity = await this.teamSkillStorageProvider.GetTeamSkillsDataAsync(teamId);
 
                 if (teamSkillEntity == null || string.IsNullOrEmpty(teamSkillEntity.Skills))

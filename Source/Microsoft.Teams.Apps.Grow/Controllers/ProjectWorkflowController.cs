@@ -75,7 +75,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// This method is used to perform join project operation.
+        /// Phương thức này được sử dụng để thực hiện hoạt động tham gia dự án.
         /// </summary>
         /// <param name="projectId">Id of the project to be deleted.</param>
         /// <param name="createdByUserId">Azure Active Directory id of project owner.</param>
