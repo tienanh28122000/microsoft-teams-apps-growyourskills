@@ -62,7 +62,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             {
                 this.RecordEvent("Acquired skills - HTTP Get call initiated");
 
-                // Get acquired skills based on user id.
+                // Nhận các kỹ năng có được dựa trên id người dùng.
                 var acquiredSkills = await this.acquiredSkillStorageProvider.GetAcquiredSkillsAsync(this.UserAadId);
                 this.RecordEvent("Acquired skills - HTTP Get call succeeded");
 
