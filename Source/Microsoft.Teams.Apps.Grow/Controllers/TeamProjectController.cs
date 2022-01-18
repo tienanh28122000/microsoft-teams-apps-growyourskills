@@ -69,7 +69,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get filtered projects for particular team as per the configured skills, if user is a part of team.
+        /// Nhận các dự án đã lọc cho nhóm cụ thể theo các kỹ năng đã định cấu hình, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="teamId">Team id for which data will fetch.</param>
         /// <param name="pageCount">Page number to get search data.</param>
@@ -96,12 +96,12 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
             try
             {
-                // Get skills based on the team id for which skills has configured.
+                // Nhận các kỹ năng dựa trên id nhóm mà các kỹ năng đã được định cấu hình.
                 var teamSkillEntity = await this.teamSkillStorageProvider.GetTeamSkillsDataAsync(teamId);
 
                 if (teamSkillEntity != null && !string.IsNullOrEmpty(teamSkillEntity.Skills))
                 {
-                    // Prepare query based on the skills and get the data using search service.
+                    // Chuẩn bị truy vấn dựa trên các kỹ năng và lấy dữ liệu bằng dịch vụ tìm kiếm.
                     var skillsQuery = this.projectHelper.CreateSkillsQuery(teamSkillEntity.Skills);
 
                     var projects = await this.projectSearchService.GetProjectsAsync(
