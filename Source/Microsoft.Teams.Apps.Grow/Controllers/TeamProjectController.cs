@@ -211,7 +211,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get list of projects as per the configured skills in a team and Title/Description/Skills search text, if user is a part of team.
+        /// Nhận danh sách các dự án theo kỹ năng đã định cấu hình trong nhóm và văn bản tìm kiếm Title/Description/Skills, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="searchText">Search text represents the Title/Description/Skills field of projects.</param>
         /// <param name="teamId">Team Id for which projects needs to be fetched.</param>
@@ -277,7 +277,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get unique owner names as per configured skills in a team, if user is a part of team.
+        /// Nhận tên chủ sở hữu duy nhất theo kỹ năng đã định cấu hình trong nhóm, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="teamId">Team id to get the configured skills for a team.</param>
         /// <returns>Returns unique user names.</returns>
