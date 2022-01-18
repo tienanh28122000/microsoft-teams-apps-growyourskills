@@ -19,7 +19,7 @@ namespace Microsoft.Teams.Apps.Grow
     public class BotController : ControllerBase
     {
         /// <summary>
-        /// Instance of IBot framework HTTP adapter.
+        /// Phiên bản của bộ điều hợp HTTP khung IBot.
         /// </summary>
         private readonly IBotFrameworkHttpAdapter botFrameworkHttpAdapter;
 
