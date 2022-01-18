@@ -98,8 +98,8 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             {
                 if (teamSkillDetails == null)
                 {
-                    this.logger.LogError($"Error while adding the team skills.");
-                    return this.BadRequest($"Error while adding the team skills.");
+                    this.logger.LogError($"Lỗi khi thêm các kỹ năng của nhóm.");
+                    return this.BadRequest($"Lỗi khi thêm các kỹ năng của nhóm.");
                 }
 
                 this.logger.LogInformation("Call to add team skill details.");
@@ -140,8 +140,8 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             }
             catch (Exception ex)
             {
-                this.RecordEvent("Error while making call to store team skills.");
-                this.logger.LogError(ex, "Error while making call to store team skills.");
+                this.RecordEvent("Lỗi khi thực hiện cuộc gọi để lưu trữ kỹ năng của nhóm.");
+                this.logger.LogError(ex, "Lỗi khi thực hiện cuộc gọi để lưu trữ kỹ năng của nhóm.");
                 throw;
             }
         }
