@@ -19,7 +19,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
     public class AuthenticationMetadataController : ControllerBase
     {
         /// <summary>
-        /// Represents a set of key/value application configuration properties for Grow bot.
+        /// Đại diện cho một tập hợp các thuộc tính cấu hình ứng dụng khóa / giá trị cho Grow bot.
         /// </summary>
         private readonly IOptions<AzureActiveDirectorySettings> options;
 
@@ -33,7 +33,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get authentication consent Url.
+        /// Nhận Url đồng ý xác thực.
         /// </summary>
         /// <param name="windowLocationOriginDomain">Window location origin domain.</param>
         /// <param name="loginHint">User Principal Name value.</param>
