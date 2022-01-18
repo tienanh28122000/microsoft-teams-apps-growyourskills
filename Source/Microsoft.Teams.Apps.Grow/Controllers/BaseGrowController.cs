@@ -69,7 +69,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Gets the user name from the HttpContext.
+        /// Lấy tên người dùng từ HttpContext.
         /// </summary>
         protected string UserName
         {
