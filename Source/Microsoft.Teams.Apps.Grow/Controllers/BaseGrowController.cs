@@ -12,7 +12,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
     using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
-    /// Base controller to handle grow projects API operations.
+    /// Bộ điều khiển cơ sở để xử lý các hoạt động API của các dự án đang phát triển.
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
