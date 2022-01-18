@@ -9,7 +9,7 @@ namespace Microsoft.Teams.Apps.Grow.Common.Interfaces
     using Microsoft.Teams.Apps.Grow.Models;
 
     /// <summary>
-    /// Interface for team project search service which helps in searching projects.
+    /// Giao diện cho dịch vụ tìm kiếm dự án nhóm giúp tìm kiếm dự án.
     /// </summary>
     public interface IProjectSearchService
     {

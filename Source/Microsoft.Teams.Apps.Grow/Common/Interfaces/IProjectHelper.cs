@@ -8,12 +8,12 @@ namespace Microsoft.Teams.Apps.Grow.Common.Interfaces
     using Microsoft.Teams.Apps.Grow.Models;
 
     /// <summary>
-    /// Interface for project helper.
+    /// Giao diện cho người trợ giúp dự án.
     /// </summary>
     public interface IProjectHelper
     {
         /// <summary>
-        /// Get filtered projects as per the configured skills.
+        ///Nhận các dự án đã lọc theo các kỹ năng đã định cấu hình.
         /// </summary>
         /// <param name="projects">A collection of projects.</param>
         /// <param name="searchText">Search text for skills.</param>
@@ -21,7 +21,7 @@ namespace Microsoft.Teams.Apps.Grow.Common.Interfaces
         IEnumerable<ProjectEntity> GetFilteredProjectsAsPerSkills(IEnumerable<ProjectEntity> projects, string searchText);
 
         /// <summary>
-        /// Create skills query to fetch projects.
+        /// Tạo truy vấn kỹ năng để tìm nạp các dự án.
         /// </summary>
         /// <param name="skills">Skills of projects.</param>
         /// <returns>Represents skills query to fetch projects.</returns>
@@ -36,7 +36,7 @@ namespace Microsoft.Teams.Apps.Grow.Common.Interfaces
         string CreateFilterSearchQuery(string status, string projectOwnerNames);
 
         /// <summary>
-        /// Get projects unique skills.
+        /// Nhận các kỹ năng độc đáo của dự án.
         /// </summary>
         /// <param name="projects">Project entities.</param>
         /// <param name="searchText">Search text for skills.</param>
