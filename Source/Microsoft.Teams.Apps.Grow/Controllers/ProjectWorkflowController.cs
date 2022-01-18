@@ -138,7 +138,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                         try
                         {
-                            // Send Notification to owner when any user joins project.
+                            // Gửi thông báo cho chủ sở hữu khi bất kỳ người dùng nào tham gia dự án.
                             await this.notificationHelper.SendProjectJoinedNotificationAsync(
                                 projectDetails,
                                 this.UserName,
@@ -146,9 +146,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                             this.RecordEvent("Notification to project owner has sent successfully.");
                         }
-#pragma warning disable CA1031 // Catching general exception occurred while sending notification to user to log error and continue to execute code
+#pragma warning disable CA1031 // Bắt gặp ngoại lệ chung đã xảy ra khi gửi thông báo cho người dùng để ghi lỗi và tiếp tục thực thi mã
                         catch (Exception ex)
-#pragma warning restore CA1031 // Catching general exception occurred while sending notification to user to log error and continue to execute code
+#pragma warning restore CA1031 // Bắt gặp ngoại lệ chung đã xảy ra khi gửi thông báo cho người dùng để ghi lỗi và tiếp tục thực thi mã
                         {
                             this.logger.LogError(ex, $"Error while sending notification to project owner for joined user {this.UserAadId} and project {projectId}.");
                         }
