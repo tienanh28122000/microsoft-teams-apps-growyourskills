@@ -131,9 +131,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             this.RecordEvent("Call to add project details.");
             this.logger.LogInformation("Call to add project details.");
 
-#pragma warning disable CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning disable CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             if (projectDetail.ProjectStartDate > projectDetail.ProjectEndDate)
-#pragma warning restore CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning restore CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             {
                 this.RecordEvent("Project start date must be less than end date.");
                 this.logger.LogInformation("Project start date must be less than end date.");
@@ -165,7 +165,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                 var result = await this.projectStorageProvider.UpsertProjectAsync(projectEntity);
 
-                // If operation is successful, run Azure search service indexer.
+                // Nếu thao tác thành công, hãy chạy trình chỉ mục dịch vụ tìm kiếm Azure.
                 if (result)
                 {
                     this.RecordEvent("Save project - HTTP Post call succeeded.");
