@@ -82,7 +82,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Fetch projects according to page count.
+        /// Tìm nạp các dự án theo số lượng trang.
         /// </summary>
         /// <param name="pageCount">Page number to get search data.</param>
         /// <returns>List of projects.</returns>
@@ -121,7 +121,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Stores new project details.
+        /// Lưu trữ chi tiết dự án mới.
         /// </summary>
         /// <param name="projectDetail">Project detail which needs to be stored.</param>
         /// <returns>Returns project for successful operation or false for failure.</returns>
@@ -131,9 +131,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             this.RecordEvent("Call to add project details.");
             this.logger.LogInformation("Call to add project details.");
 
-#pragma warning disable CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning disable CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             if (projectDetail.ProjectStartDate > projectDetail.ProjectEndDate)
-#pragma warning restore CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning restore CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             {
                 this.RecordEvent("Project start date must be less than end date.");
                 this.logger.LogInformation("Project start date must be less than end date.");
@@ -165,7 +165,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                 var result = await this.projectStorageProvider.UpsertProjectAsync(projectEntity);
 
-                // If operation is successful, run Azure search service indexer.
+                // Nếu thao tác thành công, hãy chạy trình chỉ mục dịch vụ tìm kiếm Azure.
                 if (result)
                 {
                     this.RecordEvent("Save project - HTTP Post call succeeded.");
@@ -188,7 +188,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Updates existing project details.
+        /// Cập nhật chi tiết dự án hiện có.
         /// </summary>
         /// <param name="projectDetails">Project details which needs to be updated.</param>
         /// <returns>Returns true for successful operation.</returns>
@@ -197,9 +197,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         {
             this.RecordEvent("Update project - HTTP Patch call initiated");
 
-#pragma warning disable CA1062 // project details are validated by model validations for null check and is responded with bad request status
+#pragma warning disable CA1062 // chi tiết dự án được xác nhận bằng xác thực mô hình để kiểm tra null và được phản hồi với trạng thái yêu cầu không hợp lệ
             if (string.IsNullOrEmpty(projectDetails.ProjectId))
-#pragma warning restore CA1062 // project details are validated by model validations for null check and is responded with bad request status
+#pragma warning restore CA1062 // chi tiết dự án được xác nhận bằng xác thực mô hình để kiểm tra null và được phản hồi với trạng thái yêu cầu không hợp lệ
             {
                 this.logger.LogError($"Project Id is either null or empty.");
                 this.RecordEvent("Update project - HTTP Patch call failed");
@@ -207,9 +207,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                 return this.BadRequest("Project Id cannot be null or empty.");
             }
 
-#pragma warning disable CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning disable CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             if (projectDetails.ProjectStartDate > projectDetails.ProjectEndDate)
-#pragma warning restore CA1062 // Project start date and end date are validated by model validations and responded with bad request status.
+#pragma warning restore CA1062 // Ngày bắt đầu và ngày kết thúc của dự án được xác nhận bằng xác thực mô hình và được phản hồi với trạng thái yêu cầu không hợp lệ.
             {
                 this.RecordEvent("Project start date must be less than end date.");
                 this.logger.LogInformation("Project start date must be less than end date.");
@@ -218,7 +218,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
             try
             {
-                // Validating Project Id as it will be generated at server side in case of adding new project but cannot be null or empty in case of update.
+                // Xác thực dự án Id vì nó sẽ được tạo ở phía máy chủ trong trường hợp thêm dự án mới nhưng không được để trống hoặc trống trong trường hợp cập nhật.
                 var currentProject = await this.projectStorageProvider.GetProjectAsync(this.UserAadId, projectDetails.ProjectId);
 
                 if (currentProject == null || currentProject.IsRemoved)
@@ -246,13 +246,13 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                 var upsertResult = await this.projectStorageProvider.UpsertProjectAsync(currentProject);
 
-                // If operation is successful, run indexer and sent notification to removed participants.
+                // Nếu hoạt động thành công, hãy chạy trình lập chỉ mục và gửi thông báo đến những người tham gia đã bị xóa.
                 if (upsertResult)
                 {
                     this.RecordEvent("Project - HTTP Patch call succeeded.");
                     await this.projectSearchService.RunIndexerOnDemandAsync();
 
-                    // Send notification for removed users.
+                    // Gửi thông báo cho những người dùng đã bị xóa.
                     if (removedProjectParticipants != null && removedProjectParticipants.Any())
                     {
                         await this.notificationHelper.SendProjectRemovalNotificationAsync(
@@ -278,7 +278,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Delete a project.
+        /// Xóa dự án.
         /// </summary>
         /// <param name="projectId">Project Id of the project to be deleted.</param>
         /// <returns>Returns true for successful operation.</returns>
@@ -313,12 +313,12 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                 projectDetails.IsRemoved = true;
                 var deletionResult = await this.projectStorageProvider.UpsertProjectAsync(projectDetails);
 
-                // Run indexer if operation is successful.
+                // Chạy trình chỉ mục nếu hoạt động thành công.
                 if (deletionResult)
                 {
                     await this.projectSearchService.RunIndexerOnDemandAsync();
 
-                    // Send Notification to users on project deletion.
+                    // Gửi thông báo cho người dùng về việc xóa dự án.
                     await this.notificationHelper.SendProjectDeletionNotificationAsync(
                         projectDetails);
 

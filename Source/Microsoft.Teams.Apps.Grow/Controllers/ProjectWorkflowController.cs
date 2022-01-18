@@ -75,7 +75,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// This method is used to perform join project operation.
+        /// Phương thức này được sử dụng để thực hiện hoạt động tham gia dự án.
         /// </summary>
         /// <param name="projectId">Id of the project to be deleted.</param>
         /// <param name="createdByUserId">Azure Active Directory id of project owner.</param>
@@ -98,7 +98,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                 // Allow user to join project which has status 'Active' and 'Not started'.
                 if (projectDetails != null && !projectDetails.IsRemoved && (projectDetails.Status == (int)ProjectStatus.NotStarted || projectDetails.Status == (int)ProjectStatus.Active))
                 {
-                    // If there no existing participants
+                    // Nếu không có người tham gia hiện tại
                     if (string.IsNullOrEmpty(projectDetails.ProjectParticipantsUserIds))
                     {
                         projectDetails.ProjectParticipantsUserIds = this.UserAadId;
@@ -106,10 +106,10 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                     }
                     else
                     {
-                        // Get number of people who already joined the project.
+                        // Nhận số người đã tham gia dự án.
                         var joinedUsers = projectDetails.ProjectParticipantsUserIds.Split(';').Where(participant => !string.IsNullOrEmpty(participant));
 
-                        // Check if user's joined project count is reached to maximum team size.
+                        // Kiểm tra xem số lượng dự án đã tham gia của người dùng đã đạt đến quy mô nhóm tối đa hay chưa.
                         if (projectDetails.TeamSize == joinedUsers.Count())
                         {
                             this.logger.LogError($"Project max member count reached for {projectDetails.ProjectId}.");
@@ -138,7 +138,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                         try
                         {
-                            // Send Notification to owner when any user joins project.
+                            // Gửi thông báo cho chủ sở hữu khi bất kỳ người dùng nào tham gia dự án.
                             await this.notificationHelper.SendProjectJoinedNotificationAsync(
                                 projectDetails,
                                 this.UserName,
@@ -146,9 +146,9 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                             this.RecordEvent("Notification to project owner has sent successfully.");
                         }
-#pragma warning disable CA1031 // Catching general exception occurred while sending notification to user to log error and continue to execute code
+#pragma warning disable CA1031 // Bắt gặp ngoại lệ chung đã xảy ra khi gửi thông báo cho người dùng để ghi lỗi và tiếp tục thực thi mã
                         catch (Exception ex)
-#pragma warning restore CA1031 // Catching general exception occurred while sending notification to user to log error and continue to execute code
+#pragma warning restore CA1031 // Bắt gặp ngoại lệ chung đã xảy ra khi gửi thông báo cho người dùng để ghi lỗi và tiếp tục thực thi mã
                         {
                             this.logger.LogError(ex, $"Error while sending notification to project owner for joined user {this.UserAadId} and project {projectId}.");
                         }
@@ -176,7 +176,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// This method is used to perform close project operation.
+        /// Phương pháp này được sử dụng để thực hiện hoạt động gần của dự án.
         /// </summary>
         /// <param name="closeProjectModel">Represents a close project model.</param>
         /// <returns>Returns true for successful operation.</returns>

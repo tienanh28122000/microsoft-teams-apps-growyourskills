@@ -69,7 +69,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get filtered projects for particular team as per the configured skills, if user is a part of team.
+        /// Nhận các dự án đã lọc cho nhóm cụ thể theo các kỹ năng đã định cấu hình, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="teamId">Team id for which data will fetch.</param>
         /// <param name="pageCount">Page number to get search data.</param>
@@ -96,12 +96,12 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
             try
             {
-                // Get skills based on the team id for which skills has configured.
+                // Nhận các kỹ năng dựa trên id nhóm mà các kỹ năng đã được định cấu hình.
                 var teamSkillEntity = await this.teamSkillStorageProvider.GetTeamSkillsDataAsync(teamId);
 
                 if (teamSkillEntity != null && !string.IsNullOrEmpty(teamSkillEntity.Skills))
                 {
-                    // Prepare query based on the skills and get the data using search service.
+                    // Chuẩn bị truy vấn dựa trên các kỹ năng và lấy dữ liệu bằng dịch vụ tìm kiếm.
                     var skillsQuery = this.projectHelper.CreateSkillsQuery(teamSkillEntity.Skills);
 
                     var projects = await this.projectSearchService.GetProjectsAsync(
@@ -113,7 +113,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                     if (projects != null && projects.Any())
                     {
-                        // Filter the data based on the configured skills.
+                        // Lọc dữ liệu dựa trên các kỹ năng đã định cấu hình.
                         var filteredTeamProjects = this.projectHelper.GetFilteredProjectsAsPerSkills(projects, teamSkillEntity.Skills);
                         this.RecordEvent("Filtered team project - HTTP Get call succeeded");
                         return this.Ok(filteredTeamProjects);
@@ -136,7 +136,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get projects as per the applied filters, if user is a part of team.
+        /// Nhận các dự án theo các bộ lọc được áp dụng, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="status">Semicolon separated status of projects like Not started/Active/Blocked/Closed.</param>
         /// <param name="projectOwnerNames">Semicolon separated project owner names to filter the projects.</param>
@@ -174,7 +174,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                     return this.NotFound($"Skills are not configured for team {teamId}.");
                 }
 
-                // If none of skills are selected for filtering, assign all configured skills for team to get projects which are intended for team.
+                // Nếu không có kỹ năng nào được chọn để lọc, hãy chỉ định tất cả các kỹ năng đã định cấu hình cho nhóm để nhận các dự án dành cho nhóm.
                 if (string.IsNullOrEmpty(skills))
                 {
                     skills = teamSkillEntity.Skills;
@@ -186,7 +186,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
                     skills = string.Join(';', skillsList);
                 }
 
-                // If no skills selected for filtering then get projects irrespective of skills.
+                // Nếu không có kỹ năng nào được chọn để lọc thì sẽ nhận được các dự án không phân biệt kỹ năng.
                 var skillsQuery = this.projectHelper.CreateSkillsQuery(skills);
                 var filterQuery = this.projectHelper.CreateFilterSearchQuery(status, projectOwnerNames);
 
@@ -211,7 +211,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get list of projects as per the configured skills in a team and Title/Description/Skills search text, if user is a part of team.
+        /// Nhận danh sách các dự án theo kỹ năng đã định cấu hình trong nhóm và văn bản tìm kiếm Title/Description/Skills, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="searchText">Search text represents the Title/Description/Skills field of projects.</param>
         /// <param name="teamId">Team Id for which projects needs to be fetched.</param>
@@ -277,7 +277,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
         }
 
         /// <summary>
-        /// Get unique owner names as per configured skills in a team, if user is a part of team.
+        /// Nhận tên chủ sở hữu duy nhất theo kỹ năng đã định cấu hình trong nhóm, nếu người dùng là thành viên của nhóm.
         /// </summary>
         /// <param name="teamId">Team id to get the configured skills for a team.</param>
         /// <returns>Returns unique user names.</returns>
@@ -297,7 +297,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             {
                 var projectOwnerNames = new List<string>();
 
-                // Get skills based on the team id for which skills has configured.
+                // Nhận các kỹ năng dựa trên id nhóm mà các kỹ năng đã được định cấu hình.
                 var teamSkillEntity = await this.teamSkillStorageProvider.GetTeamSkillsDataAsync(teamId);
 
                 if (teamSkillEntity == null || string.IsNullOrEmpty(teamSkillEntity.Skills))

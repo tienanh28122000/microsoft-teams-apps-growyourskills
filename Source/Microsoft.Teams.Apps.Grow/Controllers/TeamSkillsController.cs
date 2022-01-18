@@ -77,10 +77,10 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
 
                 return this.Ok(teamSkillEntity);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 this.RecordEvent("Error while making call to get team skills.");
-                this.logger.LogError(ex, "Error while making call to get team skills.");
+                this.logger.LogError(e, "Error while making call to get team skills.");
                 throw;
             }
         }
@@ -98,11 +98,11 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             {
                 if (teamSkillDetails == null)
                 {
-                    this.logger.LogError($"Error while adding the team skills.");
-                    return this.BadRequest($"Error while adding the team skills.");
+                    this.logger.LogError($"Lỗi khi thêm các kỹ năng của nhóm.");
+                    return this.BadRequest($"Lỗi khi thêm các kỹ năng của nhóm.");
                 }
 
-                this.logger.LogInformation("Call to add team skill details.");
+                this.logger.LogInformation("Gọi để thêm thông tin chi tiết về kỹ năng của nhóm.");
 
                 var teamSkillData = await this.teamSkillStorageProvider.GetTeamSkillsDataAsync(teamSkillDetails.TeamId);
                 bool result;
@@ -140,8 +140,8 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
             }
             catch (Exception ex)
             {
-                this.RecordEvent("Error while making call to store team skills.");
-                this.logger.LogError(ex, "Error while making call to store team skills.");
+                this.RecordEvent("Lỗi khi thực hiện cuộc gọi để lưu trữ kỹ năng của nhóm.");
+                this.logger.LogError(ex, "Lỗi khi thực hiện cuộc gọi để lưu trữ kỹ năng của nhóm.");
                 throw;
             }
         }
