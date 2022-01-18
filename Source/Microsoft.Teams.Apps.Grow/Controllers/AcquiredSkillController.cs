@@ -17,7 +17,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
     using Microsoft.Teams.Apps.Grow.Models;
 
     /// <summary>
-    /// Controller to handle acquired skills API operations.
+    /// Controller để xử lý các hoạt động API kỹ năng có được.
     /// </summary>
     [Route("api/acquiredskill")]
     [ApiController]
