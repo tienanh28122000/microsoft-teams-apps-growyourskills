@@ -13,7 +13,7 @@ namespace Microsoft.Teams.Apps.Grow.Controllers
     using Microsoft.Teams.Apps.Grow.Models.Configuration;
 
     /// <summary>
-    /// Controller for sign in authentication data.
+    /// Bộ điều khiển dữ liệu xác thực đăng nhập
     /// </summary>
     [Route("api/authenticationMetadata")]
     public class AuthenticationMetadataController : ControllerBase
